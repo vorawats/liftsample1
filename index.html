@@ -76,7 +76,7 @@
     }
 
     async function getUserProfile() {
-      const profile = await liff.getUserProfile();
+      const profile = await liff.getProfile();
       $('#pictureUrl').attr('src') = profile.pictureUrl;
       $('#userId').append(profile.userId);
       $('#displayName').append(profile.displayName);
