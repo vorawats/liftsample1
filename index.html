@@ -84,6 +84,19 @@
       $('#version').val(liff.getVersion());
       $('#accessToken').val(liff.getAccessToken());
       $('#isInClient').val(liff.getIsInClient());
+      if(liff.getIsInClient()){
+        $('#btnLogOut').hide();
+
+        $('#btnMsg').show();
+        $('#btnScanCode').show();
+        $('#btnClose').show();
+      }else{
+        $('#btnLogOut').show();
+
+        $('#btnMsg').hide();
+        $('#btnScanCode').hide();
+        $('#btnClose').hide();
+      }
     }
 
     async function main() {
