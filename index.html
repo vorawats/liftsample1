@@ -79,11 +79,11 @@
     }
 
     function getEnvironment() {
-      $('#os').val(liff.getOS());
-      $('#language').val(liff.getLanguage());
-      $('#version').val(liff.getVersion());
-      $('#accessToken').val(liff.getAccessToken());
-      $('#isInClient').val(liff.isInClient());
+      $('#os').html(liff.getOS());
+      $('#language').html(liff.getLanguage());
+      $('#version').html(liff.getVersion());
+      $('#accessToken').html(liff.getAccessToken());
+      $('#isInClient').html(liff.isInClient());
       if(liff.isInClient()){
         $('#btnLogOut').hide();
 
