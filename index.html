@@ -49,6 +49,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
+    const liftid = '1656710253-voOqrJZZ';
     function createUniversalLink() {
       const link1 = liff.permanentLink.createUrl();
       $('#universalLink1').append(link1);
@@ -156,11 +157,11 @@
     }
 
     function login() {
-      liff.login({ redirectUri: 'https://vorawats.github.io/liftsample1/'});
+      liff.login({ redirectUri: 'https://liff.line.me/'+liftid});
     }
 
     async function main() {
-      await liff.init({ liffId: "1656710253-voOqrJZZ" })
+      await liff.init({ liffId: liftid })
 
       $('#isLoggedIn').append(liff.isLoggedIn());
       if(liff.isLoggedIn()){
@@ -169,6 +170,7 @@
         $('#btnScanCode').show();
         $('#btnClose').show();
         $('#btnShare').show();
+        $('#btnLogin').hide();
         
         getEnvironment()
         getUserProfile()
@@ -177,6 +179,7 @@
         createUniversalLink()
       }else{
         //liff.login();
+        $('#btnLogin').show();
       }
     }
     main()
