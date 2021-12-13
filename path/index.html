@@ -20,6 +20,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
+    const liffId = '1656710253-voOqrJZZ';
+
     async function getUserProfile() {
       const profile = await liff.getProfile();
       $('#pictureUrl').attr('src', profile.pictureUrl);
@@ -35,17 +37,17 @@
     const queryString = decodeURIComponent(window.location.search);
     const params = new URLSearchParams(queryString);
     //document.getElementById("param").append(params.get("param"));
-
     $('#param').append(params.get("param"));
 
-    const liffId = '1656710253-voOqrJZZ';
-    await liff.init({ liffId: liffId });
-    $('#isLoggedIn').append(liff.isLoggedIn());
-    if(liff.isLoggedIn()){
-      getUserProfile()
-    }else{
-      liff.login({ redirectUri: 'https://liff.line.me/'+liffId+'/path?param='+params.get("param") });
+    async function main() {
+      await liff.init({ liffId: liffId })
+      if(liff.isLoggedIn()){
+        getUserProfile()
+      }else{
+        liff.login({ redirectUri: 'https://liff.line.me/'+liffId+'/path?param='+params.get("param") });
+      }
     }
+    main()
   </script>
 </body>
 </html>
