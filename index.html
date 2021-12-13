@@ -28,7 +28,7 @@
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
-  <p><a href="https://vorawats.github.io/liftsample1/path/?param=9">Link to Path</a></p>
+  <p><a href="https://liff.line.me/1656710253-voOqrJZZ/path?param=9">Link to Path</a></p>
 
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
@@ -53,7 +53,7 @@
       const link1 = liff.permanentLink.createUrl();
       $('#universalLink1').append(link1);
 
-      const link2 = liff.permanentLink.setExtraQueryParam('/path/param=8888')
+      const link2 = liff.permanentLink.setExtraQueryParam('path?param=9999')
       const myLink2 = liff.permanentLink.createUrl();
       $('#universalLink2').append(myLink2);
     }
