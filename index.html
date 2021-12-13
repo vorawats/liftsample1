@@ -49,13 +49,27 @@
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
     function createUniversalLink() {
+      const link = liff.permanentLink.createUrl();
+      $('#universalLink1').append(link);
     }
 
     async function shareMsg() {
+      await liff.shareTargetPicker(
+        [
+          {
+            type: "text",
+            text: "Hello, World!",
+          },
+        ],
+        {
+          isMultiple: true,
+        }
+      );
     }
 
     function logOut() {
       liff.logout();
+      window.location.reload();
     }
 
     function closed() {
@@ -108,7 +122,11 @@
       $('#userId').append(profile.userId);
       $('#displayName').append(profile.displayName);
       $('#statusMessage').append(profile.statusMessage);
-      $('#decodedIDToken').append(profile.getDecodedIDToken().email);
+
+      const idToken = liff.getDecodedIDToken();
+      console.log(idToken);
+    
+      $('#decodedIDToken').append(idToken.email);
     }
 
     function getEnvironment() {
@@ -135,14 +153,14 @@
     async function main() {
       await liff.init({ liffId: "1656710253-voOqrJZZ" })
 
-      $('#btnLogOut').hide();
-      $('#btnMsg').hide();
-      $('#btnScanCode').hide();
-      $('#btnClose').hide();
-      $('#btnShare').hide();
-
       $('#isLoggedIn').append(liff.isLoggedIn());
       if(liff.isLoggedIn()){
+        $('#btnLogOut').show();
+        $('#btnMsg').show();
+        $('#btnScanCode').show();
+        $('#btnClose').show();
+        $('#btnShare').show();
+        
         getEnvironment()
         getUserProfile()
         getContext()
