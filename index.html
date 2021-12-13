@@ -78,10 +78,11 @@
     async function getUserProfile() {
       const profile = await liff.getProfile();
       console.log(profile);
-      $('#pictureUrl').attr('src') = profile.pictureUrl;
+      $('#pictureUrl').attr('src', profile.pictureUrl);
       $('#userId').append(profile.userId);
       $('#displayName').append(profile.displayName);
       $('#statusMessage').append(profile.statusMessage);
+      $('#decodedIDToken').append(profile.getDecodedIDToken().email);
     }
 
     function getEnvironment() {
