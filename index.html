@@ -67,6 +67,8 @@
     }
 
     async function getFriendship() {
+      const friend = await liff.getFriendship();
+      $('#friendship').append(friend.friendFlag);
     }
 
     async function sendMsg() {
@@ -127,7 +129,7 @@
       getEnvironment()
       getUserProfile()
       getContext()
-      // getFriendship()
+      getFriendship()
       // createUniversalLink()
     }
     main()
